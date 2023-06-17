@@ -6,6 +6,281 @@
     <title>Employee Attrition ML App</title>
 </head>
 <body>
-    
+    <div class="login">
+        <h1>Employee Attrition Prediction</h1>
+        <form action="{{url_for('predict_datapoint')}}" method="post">
+            <h1>
+                <legend>Predict Your Employee Attrition</legend>
+            </h1>
+            <div class="ea-1">
+                <label class="form-label">Age: </label>
+                <input class="form-control" type="number" name="Age" placeholder="Enter Employee Age"
+                min="18" max="60">
+            </div>
+
+            <div class="ea-1">
+                <label class="form-label">Business Travel: </label>
+                <select class="form-control" name="BusinessTravel" placeholder="Select Business Travel" required>
+                    <option class="placeholder" selected disabled value="">Select Business Travel</option>
+                    <option value="Travel_Rarely">Travel Rarely</option>
+                    <option value="Travel_Frequently">Travel Frequently</option>
+                    <option value="Non-Travel">Non-Travel</option>
+                </select>
+            </div>
+
+            <div class="ea-1">
+                <label class="form-label">Daily Rate: </label>
+                <input class="form-control" type="number" name="DailyRate" placeholder="Enter Employee Daily Rate"
+                min="100" max="1500">
+            </div>
+
+            <div class="ea-1">
+                <label class="form-label">Department: </label>
+                <select class="form-control" name="Department" placeholder="Select Employee Department" required>
+                    <option class="placeholder" selected disabled value="">Select Employee Department</option>
+                    <option value="Sales">Sales</option>
+                    <option value="Research & Development">Research & Development</option>
+                    <option value="Human Resources">Human Resources</option>
+                </select>
+            </div>
+
+            <div class="ea-1">
+                <label class="form-label">Distance From Home</label>
+                <input class="form-control" type="number" name="DistanceFromHome" placeholder="Enter Distance From Home"
+                min="1" max="30">
+            </div>
+
+            <div class="ea-1">
+                <label class="form-label">Education: </label>
+                <select class="form-label" name="Education" placeholder="Select Education" required>
+                    <option class="placeholder" selected disabled value="">Select Education</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+
+            <div class="ea-1">
+                <label class="form-label">Education Field: </label>
+                <select class="form-control" name="EducationField" placeholder="Select Education Field" required>
+                    <option class="placeholder" selected disabled value="">Select Education Field</option>
+                    <option value="Life Sciences">Life Sciences</option>
+                    <option value="Medical">Medical</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Technical Degree">Technical Degree</option>
+                    <option value="Human Resources">Human Resources</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="ea-1">
+                <label class="form-label">Environment Satisfaction: </label>
+                <select class="form-control" name="EnvironmentSatisfaction" placeholder="Select Environment Satisfaction" required>
+                    <option class="placeholder" selected disabled value="">Select Environment Satisfaction</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+
+            <div class="ea-1">
+                <label class="form-label">Gender: </label>
+                <select class="form-control" name="Gender" plceholder="Select Employee Gender" required>
+                    <option class="placeholder" selected disabled value="">Select Employee Gender</option>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                </select>
+            </div>
+
+            <div class="ea-1">
+                <label class="form-label">Hourly Rate: </label>
+                <input class="form-control" type="number" name="HourlyRate" placeholder="Enter Hourly Rate"
+                min="30" max="100">
+            </div>
+
+            <div class="ea-1">
+                <label class="form-label">Job Involvement: </label>
+                <select class="form-control" name="JobInvolvement" placeholder="Select Job Involvement" required>
+                    <option class="placeholder" selected disabled value="">Select Job Involvement</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+
+            <div class="ea-1">
+                <label class="form-label">Job Level: </label>
+                <select class="form-control" name="JobLevel" placeholder="Select Job Level" required>
+                    <option class="placeholder" selected disabled value="">Select Job Level</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+
+            <div class="ea-1">
+                <label class="form-label">Job Role: </label>
+                <select class="form-control" name="JobRole" plceholder="Select Job Role" required>
+                    <option class="placeholder" selected disabled value="">Select Job Role</option>
+                    <option value="Sales Executive">Sales Executive</option>
+                    <option value="Research Scientist">Research Scientist</option>
+                    <option value="Laboratory Technician">Laboratory Technician</option>
+                    <option value="Manufacturing Director">Manufacturing Director</option>
+                    <option value="Healthcare Representative">Healthcare Representative</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Sales Representative">Sales Representative</option>
+                    <option value="Research Director">Research Director</option>
+                    <option value="Human Resources">Human Resources</option>
+                </select>
+            </div>
+
+            <div class="ea-1">
+                <label class="form-label">Job Satisfaction: </label>
+                <select class="form-control" name="JobSatisfaction" placeholder="Select Job Satisfaction" required>
+                    <option class="placeholder" selected disabled value="">Select Job Satisfaction</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+
+            <div class="ea-1">
+                <label class="form-label">Marital Status: </label>
+                <select class="form-control" name="MaritalStatus" placeholder="Select Marital Status" required>
+                    <option class="placeholder" selected disabled value="">Select Marital Status</option>
+                    <option value="Single">Single</option>
+                    <option value="Married">Married</option>
+                    <option value="Divorced">Divorced</option>
+                </select>
+            </div>
+
+            <div class="ea-1">
+                <label class="form-label">Monthly Income: </label>
+                <input class="form-control" type="number" name="MonthlyIncome" placeholder="Enter Monthly Income"
+                min="1000" max="20000">
+            </div>
+
+            <div class="ea-1">
+                <label class="form-label">Monthly Rate: </label>
+                <input class="form-control" type="number" name="MonthlyRate" placeholder="Enter Monthly Rate"
+                min="1000" max="30000">                
+            </div>
+
+            <div class="ea-1">
+                <label class="form-label">Num Companies Worked: </label>
+                <input class="form-control" type="number" name="NumCompaniesWorked" placeholder="Enter Num Companies Worked"
+                min="0" max="10">
+            </div>
+
+            <div class="ea-1">
+                <label class="form-label">OverTime: </label>
+                <select class="form-control" name="OverTime" placeholder="Select OverTime" required>
+                    <option class="placeholder" selected disabled value="">Select OverTime</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <div class="ea-1">
+                <label class="form-label">Percent Salary Hike: </label>
+                <input class="form-control" type="number" name="PercentSalaryHike" placeholder="Enter Percent Salary Hike"
+                min="5" max="30">
+            </div>
+
+            <div class="ea-1">
+                <label class="form-label">Performance Rating: </label>
+                <select class="form-control" name="PerformanceRating" placeholder="Select Performance Rating" required>
+                    <option class="placeholder" selected disabled value="">Select Performance Rating</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+
+            <div class="ea-1">
+                <label class="form-label">Relationship Satisfaction: </label>
+                <select class="form-control" name="RelationshipSatisfaction" placeholder="Select Relationship Satisfaction" required>
+                    <option class="placeholder" selected disabled value="">Select Relationship Satisfaction</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+
+            <div class="ea-1">
+                <label class="form-label">Stock Option Level: </label>
+                <select class="form-control" name="StockOptionLevel" placeholder="Select Stock Option Level" required>
+                    <option class="placeholder" selected disabled value="">Select Stock Option Level</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+
+            <div class="ea-1">
+                <label class="form-label">Total Working Years: </label>
+                <input class="form-control" type="number" name="TotalWorkingYears" placeholder="Enter Total Working Years"
+                min="0" max="40">
+            </div>
+
+            <div class="ea-1">
+                <label class="form-label">Training Times LastYear</label>
+                <input class="form-control" type="number" name="TrainingTimesLastYear" placeholder="Enter Training Times Last Year"
+                min="0" max="6">
+            </div>
+
+            <div class="ea-1">
+                <label class="form-label">Work Life Balance: </label>
+                <select class="form-control" name="WorkLifeBalance" placeholder="Select Work Life Balance" required>
+                    <option class="placeholder" selected disabled value="">Select Work Life Balance</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+
+            <div class="ea-1">
+                <label class="form-label">Years At Company: </label>
+                <input class="form-control" type="number" name="YearsAtCompany" placeholder="Enter Years At Company"
+                min="0" max="40">
+            </div>
+
+            <div class="ea-1">
+                <label class="form-label">Years In Current Role: </label>
+                <input class="form-control" type="number" name="YearsInCurrentRole" placeholder="Enter Years In Current Role"
+                min="0" max="20">
+            </div>
+
+            <div class="ea-1">
+                <label class="form-label">Years Since Last Promotion: </label>
+                <input class="form-control" type="number" name="YearsSinceLastPromotion" placeholder="Enter Years Since Last Promotion"
+                min="0" max="20">
+            </div>
+
+            <div class="ea-1">
+                <label class="form-label">Years With Current Manager: </label>
+                <input class="form-control" type="number" name="YearsWithCurrManager" placeholder="Enter Years With Current Manager"
+                min="0" max="20">
+            </div>
+
+            <div class="ea-1">
+                <input class="btn btn-primary" type="submit" value="Predict Employee Attrition" required>
+            </div>
+        </form>
+        <h2>
+            The Predict is {{results}}
+        </h2>
+    </div>   
 </body>
 </html>
