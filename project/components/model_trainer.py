@@ -35,6 +35,8 @@ class ModelTrainer:
                 test_array[:,-1]
             )
             
+            logging.info("Defining models to train data")
+            
             models = {
                 "Logistic Regression": LogisticRegression(max_iter=1000),
                 "Decision Tree Classifier": DecisionTreeClassifier(),
@@ -47,6 +49,8 @@ class ModelTrainer:
                 "CatBoost Classifier": CatBoostClassifier(verbose=False),
                 "XGBoost Classifier": XGBClassifier()
             }
+            
+            logging.info("Defining hyperparameters for tuning model performance")
             
             params = {
                 "Logistic Regression": {},
