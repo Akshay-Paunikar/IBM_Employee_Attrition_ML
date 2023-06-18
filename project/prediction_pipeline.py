@@ -4,7 +4,7 @@ import os
 import numpy as np
 import pandas as pd
 
-from project.exception import CustomException
+from exception import CustomException
 from project.logger import logging
 from project.utils import load_object
 
@@ -32,21 +32,16 @@ class CustomData:
     def __init__(self,
                  Age:int,
                  BusinessTravel:str,
-                 DailyRate:int,
                  Department:str,
                  DistanceFromHome:int,
-                 Education:int,
                  EducationField:str,
                  EnvironmentSatisfaction:int,
                  Gender:str,
-                 HourlyRate:int,
-                 JobInvolvement:int,
                  JobLevel:int,
                  JobRole:str,
                  JobSatisfaction:int,
                  MaritalStatus:str,
                  MonthlyIncome:int,
-                 MonthlyRate:int,
                  NumCompaniesWorked:int,
                  OverTime:str,
                  PercentSalaryHike:int,
@@ -63,21 +58,16 @@ class CustomData:
         
         self.Age = Age
         self.BusinessTravel = BusinessTravel
-        self.DailyRate = DailyRate
         self.Department = Department
         self.DistanceFromHome = DistanceFromHome
-        self.Education = Education
         self.EducationField = EducationField
         self.EnvironmentSatisfaction = EnvironmentSatisfaction
         self.Gender = Gender
-        self.HourlyRate = HourlyRate
-        self.JobInvolvement = JobInvolvement
         self.JobLevel = JobLevel
         self.JobRole = JobRole
         self.JobSatisfaction = JobSatisfaction
         self.MaritalStatus = MaritalStatus
         self.MonthlyIncome = MonthlyIncome
-        self.MonthlyRate = MonthlyRate
         self.NumCompaniesWorked = NumCompaniesWorked
         self.OverTime = OverTime
         self.PercentSalaryHike = PercentSalaryHike
@@ -97,21 +87,16 @@ class CustomData:
             custom_data_input_dict = {
                 "Age": [self.Age],
                 "BusinessTravel" :[self.BusinessTravel],
-                "DailyRate": [self.DailyRate],
                 "Department": [self.Department],
                 "DistanceFromHome": [self.DistanceFromHome],
-                "Education": [self.Education],
                 "EducationField": [self.EducationField],
                 "EnvironmentSatisfaction": [self.EnvironmentSatisfaction],
                 "Gender": [self.Gender],
-                "HourlyRate": [self.HourlyRate],
-                "JobInvolvement": [self.JobInvolvement],
                 "JobLevel": [self.JobLevel],
                 "JobRole": [self.JobRole],
                 "JobSatisfaction": [self.JobSatisfaction],
                 "MaritalStatus": [self.MaritalStatus],
                 "MonthlyIncome": [self.MonthlyIncome],
-                "MonthlyRate": [self.MonthlyRate],
                 "NumCompaniesWorked": [self.NumCompaniesWorked],
                 "OverTime": [self.OverTime],
                 "PercentSalaryHike": [self.PercentSalaryHike],

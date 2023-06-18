@@ -29,12 +29,6 @@
             </div>
 
             <div class="ea-1">
-                <label class="form-label">Daily Rate: </label>
-                <input class="form-control" type="number" name="DailyRate" placeholder="Enter Employee Daily Rate"
-                min="100" max="1500">
-            </div>
-
-            <div class="ea-1">
                 <label class="form-label">Department: </label>
                 <select class="form-control" name="Department" placeholder="Select Employee Department" required>
                     <option class="placeholder" selected disabled value="">Select Employee Department</option>
@@ -45,22 +39,10 @@
             </div>
 
             <div class="ea-1">
-                <label class="form-label">Distance From Home</label>
+                <label class="form-label">Distance From Home: </label>
                 <input class="form-control" type="number" name="DistanceFromHome" placeholder="Enter Distance From Home"
                 min="1" max="30">
-            </div>
-
-            <div class="ea-1">
-                <label class="form-label">Education: </label>
-                <select class="form-label" name="Education" placeholder="Select Education" required>
-                    <option class="placeholder" selected disabled value="">Select Education</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
+            </div>            
 
             <div class="ea-1">
                 <label class="form-label">Education Field: </label>
@@ -93,24 +75,7 @@
                     <option value="Female">Female</option>
                     <option value="Male">Male</option>
                 </select>
-            </div>
-
-            <div class="ea-1">
-                <label class="form-label">Hourly Rate: </label>
-                <input class="form-control" type="number" name="HourlyRate" placeholder="Enter Hourly Rate"
-                min="30" max="100">
-            </div>
-
-            <div class="ea-1">
-                <label class="form-label">Job Involvement: </label>
-                <select class="form-control" name="JobInvolvement" placeholder="Select Job Involvement" required>
-                    <option class="placeholder" selected disabled value="">Select Job Involvement</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
-            </div>
+            </div>            
 
             <div class="ea-1">
                 <label class="form-label">Job Level: </label>
@@ -166,13 +131,7 @@
                 <input class="form-control" type="number" name="MonthlyIncome" placeholder="Enter Monthly Income"
                 min="1000" max="20000">
             </div>
-
-            <div class="ea-1">
-                <label class="form-label">Monthly Rate: </label>
-                <input class="form-control" type="number" name="MonthlyRate" placeholder="Enter Monthly Rate"
-                min="1000" max="30000">                
-            </div>
-
+            
             <div class="ea-1">
                 <label class="form-label">Num Companies Worked: </label>
                 <input class="form-control" type="number" name="NumCompaniesWorked" placeholder="Enter Num Companies Worked"
@@ -279,7 +238,7 @@
             </div>
         </form>
         <h2>
-            The Predict is {{results}}
+            The Prediction is {{results}}
         </h2>
     </div>   
 </body>
