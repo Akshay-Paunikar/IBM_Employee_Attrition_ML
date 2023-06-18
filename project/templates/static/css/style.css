@@ -1,0 +1,51 @@
+body{
+    background-color:cadetblue;
+}
+
+h1{
+    color: brown;
+    text-align: center;
+}
+
+h2{
+    color:slateblue;
+    text-align: center;
+    font-family: cursive;    
+}
+
+h3{
+    color: saddlebrown;
+    text-align: center;
+    font-family: cursive;
+}
+
+.ea-1{
+    background-color:burlywood;
+    display: inline-block;
+    font-size:larger;
+    font-weight: bold;
+    margin: 5px;
+    padding: 5px;
+    border: 4px solid white;
+    border-radius: 5px;
+    width:auto;
+    height:auto;
+}
+
+.button{
+    width: auto;
+    font-size:x-large;
+    font-weight: bold;
+    text-align: center;
+    background-color:darkolivegreen;
+    color:white;
+    padding: 10px 15px;
+    margin: 8px 0;
+    border: 4px solid blanchedalmond;
+    border-radius: 4px;
+    cursor:pointer;
+    align-items: center;
+}
+
+
+

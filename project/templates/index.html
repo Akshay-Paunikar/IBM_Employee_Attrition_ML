@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Attrition ML App</title>
+    <link rel="stylesheet" href="static/css/style.css">
 </head>
 <body>
     <div class="login">
         <h1>Employee Attrition Prediction</h1>
         <form action="{{url_for('predict_datapoint')}}" method="post">
-            <h1>
+            <h2>
                 <legend>Predict Your Employee Attrition</legend>
-            </h1>
+            </h2>
             <div class="ea-1">
                 <label class="form-label">Age: </label>
                 <input class="form-control" type="number" name="Age" placeholder="Enter Employee Age"
@@ -233,13 +234,13 @@
                 min="0" max="20">
             </div>
 
-            <div class="ea-1">
-                <input class="btn btn-primary" type="submit" value="Predict Employee Attrition" required>
+            <div class="button">Predict Employee Attrition:
+                <input class="btn btn-primary" type="submit" value="Submit" required>
             </div>
         </form>
-        <h2>
+        <h3>
             The Prediction is {{results}}
-        </h2>
+        </h3>
     </div>   
 </body>
 </html>
