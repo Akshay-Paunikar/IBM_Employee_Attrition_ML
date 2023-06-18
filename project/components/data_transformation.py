@@ -24,10 +24,9 @@ class DataTransformation:
     def get_data_transformer_object(self):
         """This Function is responsible for data transformation"""
         try:
-            numerical_columns = ['Age', 'DailyRate', 'DistanceFromHome', 'Education', 'EnvironmentSatisfaction', 'HourlyRate', 
-                                 'JobInvolvement', 'JobLevel', 'JobSatisfaction', 'MonthlyIncome', 'MonthlyRate', 'NumCompaniesWorked', 
-                                 'PercentSalaryHike', 'PerformanceRating', 'RelationshipSatisfaction', 'StockOptionLevel', 
-                                 'TotalWorkingYears', 'TrainingTimesLastYear', 'WorkLifeBalance', 'YearsAtCompany', 
+            numerical_columns = ['Age', 'DistanceFromHome', 'EnvironmentSatisfaction', 'JobLevel', 'JobSatisfaction', 'MonthlyIncome', 
+                                 'NumCompaniesWorked', 'PercentSalaryHike', 'PerformanceRating', 'RelationshipSatisfaction', 
+                                 'StockOptionLevel', 'TotalWorkingYears', 'TrainingTimesLastYear', 'WorkLifeBalance', 'YearsAtCompany',
                                  'YearsInCurrentRole', 'YearsSinceLastPromotion', 'YearsWithCurrManager']
             
             categorical_columns = ['BusinessTravel', 
