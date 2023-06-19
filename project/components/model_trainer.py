@@ -18,16 +18,15 @@ from sklearn.metrics import accuracy_score, confusion_matrix, classification_rep
 
 @dataclass
 class ModelTrainerConfig:
-    trained_model_file_path = os.path.join('artifacts', 'model.pkl')
+    trained_model_file_path = os.path.join("artifacts", "model.pkl")
     
 class ModelTrainer:
-    def __init__(self):
+    def __init__(self) -> None:
         self.model_trainer_config = ModelTrainerConfig()
         
     def initiate_model_trainer(self, train_array, test_array):
         try:
-            logging.info("Splitting data into train and test")
-            
+            logging.info("Splitting train and test data")
             X_train, y_train, X_test, y_test = (
                 train_array[:,:-1],
                 train_array[:,-1],
@@ -35,88 +34,70 @@ class ModelTrainer:
                 test_array[:,-1]
             )
             
-            logging.info("Defining models to train data")
-            
             models = {
                 "Logistic Regression": LogisticRegression(max_iter=1000),
-                "Decision Tree Classifier": DecisionTreeClassifier(),
+                "Decision Tree": DecisionTreeClassifier(),
                 "Random Forest Classifier": RandomForestClassifier(),
                 "Gradient Boosting Classifier": GradientBoostingClassifier(),
                 "Ada Boost Classifier": AdaBoostClassifier(),
                 "Support Vector Classifier": SVC(),
-                "Gaussin Naive Bayes": GaussianNB(),
-                # "K-Neighbours Classifier": KNeighborsClassifier(),
+                "Gaussin Naive Bayes": GaussianNB(),                
                 "CatBoost Classifier": CatBoostClassifier(verbose=False),
                 "XGBoost Classifier": XGBClassifier()
             }
             
-            logging.info("Defining hyperparameters for tuning model performance")
-            
             params = {
                 "Logistic Regression": {},
-                "Decision Tree Classifier": {
-                    "max_depth": [3, 5, 7, 9],
-                    "min_samples_split": [10, 20, 30, 40],
-                    "min_samples_leaf": [5, 10, 20, 50],
+                "Decision Tree": {
+                    "max_depth": [3, 5, 7],
                     "criterion": ['entropy', 'gini'],
                     "splitter": ['best', 'random'],
-                    "max_features": ['auto', 'sqrt', 'log2']
+                    "max_features": ['sqrt','log2']                    
                 },
                 "Random Forest Classifier": {
-                    "n_estimators": [100, 200, 400, 600, 800],
                     "criterion": ['entropy', 'gini', 'log_loss'],
-                    "max_depth": [3, 5, 7, 9],
-                    "min_samples_split": [10, 20, 30, 40],
-                    "min_samples_leaf": [5, 10, 20, 50],
-                    "max_features": [None, 'sqrt', 'log2']                                        
+                    "max_depth": [3, 5, 7],
+                    "max_features": ['sqrt','log2'],
+                    "n_estimators": [8,16,32,64,128,256]                                                     
                 },
-                "Gradient Boosting Classifier":{
-                    "n_estimators": [100, 200, 400, 600, 800],
+                "Gradient Boosting Classifier":{                    
                     "criterion": ['friedman_mse', 'squared_error'],
-                    "max_depth": [3, 5, 7, 9],
-                    "min_samples_split": [10, 20, 30, 40],
-                    "min_samples_leaf": [5, 10, 20, 50],
-                    "max_features": ['auto', 'sqrt', 'log2'],
-                    "loss": ['log_loss', 'deviance', 'exponential'],
-                    "learning_rate": [0.1, 0.01, 0.5, 0.05],
-                    "subsample": [0.1, 0.4, 0.6, 0.8, 1.0]                   
+                    "max_depth": [3, 5, 7],                    
+                    "learning_rate": [0.1, 0.01, 0.5],
+                    "max_features": ['sqrt','log2'],
+                    "n_estimators": [8,16,32,64,128,256]                                     
                 },
                 "Ada Boost Classifier":{
-                    "n_estimators": [100, 200, 400, 600, 800],
-                    "learning_rate": [0.1, 0.01, 0.5, 0.05],
-                    "algorithm": ['SAMME', 'SAMME.R']
+                    "learning_rate": [0.1, 0.01, 0.5],
+                    "algorithm": ['SAMME', 'SAMME.R'],
+                    "n_estimators": [8,16,32,64,128,256]
                 },
                 "Support Vector Classifier":{
-                    "kernel": ['linear', 'poly', 'rbf', 'sigmoid', 'precomputed'],
+                    "kernel": ['linear', 'poly', 'rbf', 'sigmoid'],
                     "gamma": ['scale', 'auto']
                 },
-                "Gaussin Naive Bayes": {},                
-                "Cat Boost Classifier": {
-                    'depth': [6,8,10],
-                    'learning_rate': [0.1, 0.01, 0.5, 0.05],
+                "Gaussin Naive Bayes": {},
+                "CatBoost Classifier": {
+                    'depth': [6,8],
+                    'learning_rate': [0.1, 0.01, 0.5],
                     'iterations': [30, 50, 100]
                 },
                 "XGBoost Classifier":{
-                    'learning_rate':[.1,.01,.05,.001],
-                    'n_estimators': [8,16,32,64,128,256]
+                    'learning_rate':[0.1,0.01,0.05],
+                    "n_estimators": [8,16,32,64,128,256]
                 }
             }
             
-            model_report: dict = evaluate_model(
-                TrainFeatures=X_train,
-                TrainTarget=y_train,
-                TestFeatures=X_test,
-                TestTarget=y_test,
-                models=models,
-                params=params
-            )
+            model_report: dict = evaluate_model(TrainFeatures=X_train, TrainTarget=y_train,
+                                                TestFeatures=X_test, TestTarget=y_test,
+                                                models=models, params=params)
             
-            logging.info("Model Hyperparameter Tuning done")
-            logging.info("Model traininig complete")
+            logging.info("model hyperparameter tuning done")
+            logging.info("model training complete")
             
             # to get best model score from dictionary
             best_model_score = max(sorted(model_report.values()))
-            
+        
             # to get best model name from dictionary
             best_model_name = list(model_report.keys())[
                 list(model_report.values()).index(best_model_score)
@@ -126,7 +107,7 @@ class ModelTrainer:
             
             if best_model_score<0.6:
                 raise CustomException("No Best Model Found", sys)
-            
+
             logging.info("Best model found on both train and test dataset : {} with accracy score : {}".format(best_model, 
                                                                                                                best_model_score))
             
@@ -134,13 +115,13 @@ class ModelTrainer:
                         obj=best_model)
             
             logging.info("Using the best model found to predict on test data")
-            
+
             predicted = best_model.predict(X_test)
             
             Accuracy_Score = accuracy_score(y_test, predicted)
             logging.info("Prediction result on test data : Accuracy Score -> {}".format(Accuracy_Score))
             
-            return Accuracy_Score, best_model            
+            return Accuracy_Score, best_model
             
         except Exception as e:
             raise CustomException(e,sys)

@@ -20,7 +20,7 @@ h3{
 }
 
 .ea-1{
-    background-color: wheat;
+    background-color:burlywood;
     display: inline-block;
     font-size:larger;
     font-weight: bold;
@@ -39,8 +39,8 @@ h3{
     text-align: center;
     background-color:darkolivegreen;
     color:white;
-    padding: 8px 10px;
-    margin: 5px 0;
+    padding: 10px 15px;
+    margin: 8px 0;
     border: 4px solid blanchedalmond;
     border-radius: 4px;
     cursor:pointer;

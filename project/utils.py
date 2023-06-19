@@ -6,6 +6,7 @@ import dill
 import pickle
 
 from sklearn.metrics import accuracy_score
+from sklearn.model_selection import GridSearchCV
 from project.exception import CustomException
 
 def save_object(file_path, obj):
@@ -24,8 +25,13 @@ def evaluate_model(TrainFeatures, TrainTarget, TestFeatures, TestTarget, models,
         report = {}
         
         for i in range(len(list(models))):
-            model = list(models.values())[i]
+            model = list(models.values())[i]            
+            para = params[list(models.keys())[i]]
+                        
+            gs = GridSearchCV(model, para, cv=3)
+            gs.fit(TrainFeatures, TrainTarget)
             
+            model.set_params(**gs.best_params_)            
             model.fit(TrainFeatures, TrainTarget)
             
             y_train_pred = model.predict(TrainFeatures)
