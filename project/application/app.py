@@ -51,7 +51,11 @@ def predict_datapoint():
         
         predict_pipeline = PredictPipeline()
         results = predict_pipeline.predict(pred_df)
-        return render_template('index.html', results=results[0])
+        if results== 0.0:
+            attrition = "No"
+        else:
+            attrition = "Yes"
+        return render_template('index.html', results=attrition)
     
 if __name__ == "__main__":
     app.run(debug=True)
